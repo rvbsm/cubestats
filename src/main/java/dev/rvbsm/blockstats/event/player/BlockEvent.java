@@ -2,8 +2,8 @@ package dev.rvbsm.blockstats.event.player;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public final class BlockEvent {
@@ -19,11 +19,11 @@ public final class BlockEvent {
 
     @FunctionalInterface
     public interface Break {
-        void blockBreak(World world, PlayerEntity player, ItemStack stack);
+        void blockBreak(World world, PlayerEntity player, Block block);
     }
 
     @FunctionalInterface
     public interface Place {
-        void blockPlace(World world, PlayerEntity player, ItemStack stack);
+        void blockPlace(World world, PlayerEntity player, Block block);
     }
 }
