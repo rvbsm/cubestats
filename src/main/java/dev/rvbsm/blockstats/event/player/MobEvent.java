@@ -16,9 +16,9 @@ public class MobEvent {
         for (Leash event : listeners)
             event.animalLeash(world, player, entity);
     });
-    public static final Event<Mount> MOUNT = EventFactory.createArrayBacked(Mount.class, (listeners) -> (world, player, entity) -> {
-        for (Mount event : listeners)
-            event.animalMount(world, player, entity);
+    public static final Event<Tame> TAME = EventFactory.createArrayBacked(Tame.class, (listeners) -> (world, player, entity) -> {
+        for (Tame event : listeners)
+            event.animalTame(world, player, entity);
     });
     public static final Event<Kill> KILL = EventFactory.createArrayBacked(Kill.class, (listeners) -> (world, player, entity) -> {
         for (Kill event : listeners)
@@ -44,8 +44,8 @@ public class MobEvent {
     }
 
     @FunctionalInterface
-    public interface Mount {
-        void animalMount(World world, PlayerEntity player, Entity entity);
+    public interface Tame {
+        void animalTame(World world, PlayerEntity player, Entity entity);
     }
 
     @FunctionalInterface
