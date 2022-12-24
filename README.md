@@ -1,9 +1,8 @@
-# Fabric Example Mod
+# CubeStats
 
-## Setup
-
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+Started as port of [RiceStats](https://github.com/RiceCX/RiceStats) to Fabric, but Fabric hasn't built-in Events :(  
+Thanks [@RiceCX](https://github.com/RiceCX) for idea.
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+This project is using [MIT license](https://github.com/rvbsm/cubestats/LICENSE).
