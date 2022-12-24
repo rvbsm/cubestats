@@ -1,6 +1,6 @@
 package dev.rvbsm.blockstats.mixin.item;
 
-import dev.rvbsm.blockstats.event.player.BlockEvent;
+import dev.rvbsm.blockstats.event.player.block.BlockPlaceEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,6 +22,6 @@ public class BlockItemMixin {
         final PlayerEntity player = context.getPlayer();
         final Block block = Block.getBlockFromItem(context.getStack().getItem());
 
-        if (!world.isClient()) BlockEvent.PLACE.invoker().blockPlace(world, player, block);
+        if (!world.isClient()) BlockPlaceEvent.PLACE.invoker().blockPlace(player, block);
     }
 }
