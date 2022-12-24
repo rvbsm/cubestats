@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.cubestats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.entity.sheep.ShearEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +20,6 @@ public class SheepEntityMixin {
         final World world = player.getWorld();
         final DyeColor color = instance.getColor();
 
-        if (!world.isClient()) MobEvent.SHEAR.invoker().sheepShear(world, (PlayerEntity) player, color);
+        if (!world.isClient()) ShearEvent.SHEAR.invoker().sheepShear((PlayerEntity) player, color);
     }
 }

@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.network.packet.s2c.play;
 
-import dev.rvbsm.cubestats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.entity.LeashEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.EntityAttachS2CPacket;
@@ -18,7 +18,7 @@ public class EntityAttachS2CPacketMixin {
         if (player != null) {
             final World world = player.getWorld();
 
-            if (!world.isClient()) MobEvent.LEASH.invoker().animalLeash(world, (PlayerEntity) player, entity);
+            if (!world.isClient()) LeashEvent.LEASH.invoker().animalLeash((PlayerEntity) player, entity);
         }
     }
 }

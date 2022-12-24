@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.cubestats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.entity.TameEvent;
 import net.minecraft.advancement.criterion.TameAnimalCriterion;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.TameableEntity;
@@ -17,7 +17,7 @@ public class TameableEntityMixin {
             method = "setOwner")
     private void setOwner(TameAnimalCriterion instance, ServerPlayerEntity player, AnimalEntity entity) {
         final World world = player.getWorld();
-        if (!world.isClient()) MobEvent.TAME.invoker().animalTame(world, player, entity);
+        if (!world.isClient()) TameEvent.TAME.invoker().animalTame(player, entity);
         instance.trigger(player, entity);
     }
 }

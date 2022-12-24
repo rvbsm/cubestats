@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.cubestats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.entity.BreedEvent;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.AllayEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,6 +22,6 @@ public class AllayEntityMixin {
         final World world = player.getWorld();
         final AllayEntity dummy = EntityType.ALLAY.create(world);
 
-        if (!world.isClient()) MobEvent.BREED.invoker().animalBreed(world, player, dummy);
+        if (!world.isClient()) BreedEvent.BREED.invoker().animalBreed(player, dummy);
     }
 }

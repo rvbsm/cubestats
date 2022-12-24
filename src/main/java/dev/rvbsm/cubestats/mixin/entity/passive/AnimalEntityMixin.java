@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.cubestats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.entity.BreedEvent;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -21,6 +21,6 @@ public class AnimalEntityMixin {
     private void breedEntity(ServerWorld world, AnimalEntity other, CallbackInfo ci) {
         final PlayerEntity player = (PlayerEntity) world.getEntity(this.lovingPlayer);
 
-        if (!world.isClient()) MobEvent.BREED.invoker().animalBreed(world, player, other);
+        if (!world.isClient()) BreedEvent.BREED.invoker().animalBreed(player, other);
     }
 }

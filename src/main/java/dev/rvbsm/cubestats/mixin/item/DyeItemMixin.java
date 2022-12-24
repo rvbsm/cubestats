@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.item;
 
-import dev.rvbsm.cubestats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.entity.sheep.DyeEvent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
@@ -28,6 +28,6 @@ public class DyeItemMixin {
     void useOnEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         final World world = player.getWorld();
 
-        if (!world.isClient()) MobEvent.DYE.invoker().sheepDye(world, player, this.color);
+        if (!world.isClient()) DyeEvent.DYE.invoker().sheepDye(player, this.color);
     }
 }
