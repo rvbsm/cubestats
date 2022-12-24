@@ -1,4 +1,4 @@
-package dev.rvbsm.blockstats.event.player.block;
+package dev.rvbsm.cubestats.event.player.block;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;

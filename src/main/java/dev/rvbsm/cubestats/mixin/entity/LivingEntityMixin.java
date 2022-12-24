@@ -1,6 +1,7 @@
-package dev.rvbsm.blockstats.mixin.entity;
+package dev.rvbsm.cubestats.mixin.entity;
 
-import dev.rvbsm.blockstats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.PlayerEvent;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

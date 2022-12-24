@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "id": "blockstats",
+  "id": "cubestats",
   "version": "${version}",
 
-  "name": "BlockStats",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "CubeStats",
+  "description": "Player Statistic Mod",
   "authors": [
     "rvbsm"
   ],
   "contact": {
-    "sources": "https://github.com/rvbsm/blockstats"
+    "sources": "https://github.com/rvbsm/cubestats"
   },
 
   "license": "MIT",
@@ -21,7 +21,7 @@
     ]
   },
   "mixins": [
-    "blockstats.mixins.json"
+    "cubestats.mixins.json"
   ],
 
   "depends": {

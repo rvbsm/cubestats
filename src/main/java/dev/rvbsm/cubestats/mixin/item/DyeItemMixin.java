@@ -1,6 +1,6 @@
-package dev.rvbsm.blockstats.mixin.item;
+package dev.rvbsm.cubestats.mixin.item;
 
-import dev.rvbsm.blockstats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.MobEvent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;

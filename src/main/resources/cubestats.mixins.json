@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.rvbsm.cubestats.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "entity.passive.AllayEntityMixin",
+    "entity.passive.AnimalEntityMixin",
+    "item.BlockItemMixin",
+    "item.DyeItemMixin",
+    "network.packet.s2c.play.EntityAttachS2CPacketMixin",
+    "item.ItemMixin",
+    "entity.LivingEntityMixin",
+    "entity.player.PlayerEntityMixin",
+    "network.ServerPlayerInteractionManagerMixin",
+    "entity.passive.SheepEntityMixin",
+    "entity.passive.TameableEntityMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

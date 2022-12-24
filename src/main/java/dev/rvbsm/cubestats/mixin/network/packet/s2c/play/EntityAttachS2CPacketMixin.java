@@ -1,6 +1,6 @@
-package dev.rvbsm.blockstats.mixin.network.packet.s2c.play;
+package dev.rvbsm.cubestats.mixin.network.packet.s2c.play;
 
-import dev.rvbsm.blockstats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.MobEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.EntityAttachS2CPacket;

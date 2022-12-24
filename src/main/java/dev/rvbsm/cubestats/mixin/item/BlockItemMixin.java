@@ -1,6 +1,6 @@
-package dev.rvbsm.blockstats.mixin.item;
+package dev.rvbsm.cubestats.mixin.item;
 
-import dev.rvbsm.blockstats.event.player.block.BlockPlaceEvent;
+import dev.rvbsm.cubestats.event.player.block.BlockPlaceEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

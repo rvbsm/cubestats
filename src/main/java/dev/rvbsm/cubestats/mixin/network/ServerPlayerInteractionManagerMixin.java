@@ -1,6 +1,6 @@
-package dev.rvbsm.blockstats.mixin.network;
+package dev.rvbsm.cubestats.mixin.network;
 
-import dev.rvbsm.blockstats.event.player.block.BlockBreakEvent;
+import dev.rvbsm.cubestats.event.player.block.BlockBreakEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

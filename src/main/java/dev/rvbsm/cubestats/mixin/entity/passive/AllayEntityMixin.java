@@ -1,6 +1,6 @@
-package dev.rvbsm.blockstats.mixin.entity.passive;
+package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.blockstats.event.player.MobEvent;
+import dev.rvbsm.cubestats.event.player.MobEvent;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.AllayEntity;
 import net.minecraft.entity.player.PlayerEntity;
