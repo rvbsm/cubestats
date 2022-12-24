@@ -17,13 +17,11 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(AllayEntity.class)
 public class AllayEntityMixin {
 
-    // TODO: 12/23/2022 double invoke
-    // TODO: 12/23/2022 called from new allay too?
     @Inject(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/AllayEntity;duplicate()V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void breedAllay(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir, ItemStack itemStack, ItemStack itemStack2) {
         final World world = player.getWorld();
         final AllayEntity dummy = EntityType.ALLAY.create(world);
 
-        MobEvent.BREED.invoker().animalBreed(world, player, dummy);
+        if (!world.isClient()) MobEvent.BREED.invoker().animalBreed(world, player, dummy);
     }
 }

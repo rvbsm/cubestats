@@ -17,7 +17,7 @@ public class TameableEntityMixin {
             method = "setOwner")
     private void setOwner(TameAnimalCriterion instance, ServerPlayerEntity player, AnimalEntity entity) {
         final World world = player.getWorld();
-        MobEvent.TAME.invoker().animalTame(world, player, entity);
+        if (!world.isClient()) MobEvent.TAME.invoker().animalTame(world, player, entity);
         instance.trigger(player, entity);
     }
 }

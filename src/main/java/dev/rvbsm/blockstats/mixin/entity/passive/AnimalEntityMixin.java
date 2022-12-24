@@ -21,6 +21,6 @@ public class AnimalEntityMixin {
     private void breedEntity(ServerWorld world, AnimalEntity other, CallbackInfo ci) {
         final PlayerEntity player = (PlayerEntity) world.getEntity(this.lovingPlayer);
 
-        MobEvent.BREED.invoker().animalBreed(world, player, other);
+        if (!world.isClient()) MobEvent.BREED.invoker().animalBreed(world, player, other);
     }
 }

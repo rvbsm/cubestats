@@ -26,6 +26,6 @@ public abstract class SheepEntityMixin {
         final World world = player.getWorld();
         final DyeColor color = this.getColor();
 
-        MobEvent.SHEAR.invoker().sheepShear(world, player, color);
+        if (!world.isClient()) MobEvent.SHEAR.invoker().sheepShear(world, (PlayerEntity) player, color);
     }
 }

@@ -28,6 +28,6 @@ public class DyeItemMixin {
     void useOnEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         final World world = player.getWorld();
 
-        MobEvent.DYE.invoker().sheepDye(world, player, this.color);
+        if (!world.isClient()) MobEvent.DYE.invoker().sheepDye(world, player, this.color);
     }
 }
