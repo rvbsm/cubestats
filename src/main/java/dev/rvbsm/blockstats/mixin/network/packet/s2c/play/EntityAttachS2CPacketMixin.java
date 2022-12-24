@@ -1,4 +1,4 @@
-package dev.rvbsm.blockstats.mixin;
+package dev.rvbsm.blockstats.mixin.network.packet.s2c.play;
 
 import dev.rvbsm.blockstats.event.player.MobEvent;
 import net.minecraft.entity.Entity;

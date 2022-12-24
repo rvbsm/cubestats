@@ -1,4 +1,4 @@
-package dev.rvbsm.blockstats.mixin;
+package dev.rvbsm.blockstats.mixin.item;
 
 import dev.rvbsm.blockstats.event.player.BlockEvent;
 import net.minecraft.block.Block;

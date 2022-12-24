@@ -1,4 +1,4 @@
-package dev.rvbsm.blockstats.mixin;
+package dev.rvbsm.blockstats.mixin.entity.passive;
 
 import dev.rvbsm.blockstats.event.player.MobEvent;
 import net.minecraft.entity.passive.SheepEntity;
