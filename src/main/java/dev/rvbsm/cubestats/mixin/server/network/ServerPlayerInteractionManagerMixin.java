@@ -1,4 +1,4 @@
-package dev.rvbsm.cubestats.mixin.network;
+package dev.rvbsm.cubestats.mixin.server.network;
 
 import dev.rvbsm.cubestats.event.player.block.BlockBreakEvent;
 import net.minecraft.block.Block;
@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public class ServerPlayerInteractionManagerMixin {
     @Shadow
     protected ServerWorld world;
+
     @Final
     @Shadow
     protected ServerPlayerEntity player;
