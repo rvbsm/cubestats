@@ -22,6 +22,6 @@ public class AllayEntityMixin {
         final World world = player.getWorld();
         final AllayEntity dummy = EntityType.ALLAY.create(world);
 
-        if (!world.isClient()) BreedEvent.BREED.invoker().animalBreed(player, dummy);
+        BreedEvent.BREED.invoker().animalBreed(player, dummy);
     }
 }

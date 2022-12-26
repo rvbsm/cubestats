@@ -19,7 +19,7 @@ public class VillagerEntityMixin {
     @Redirect(at = @At(value = "FIELD", target = "Lnet/minecraft/entity/passive/VillagerEntity;lastCustomer:Lnet/minecraft/entity/player/PlayerEntity;", opcode = Opcodes.PUTFIELD),
             method = "afterUsing")
     private void afterUsing(VillagerEntity villager, PlayerEntity player) {
-        if (player.world.isClient()) TradeEvent.TRADE.invoker().playerTrade(player, villager);
+        TradeEvent.TRADE.invoker().playerTrade(player, villager);
         this.lastCustomer = player;
     }
 }

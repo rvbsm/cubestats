@@ -16,6 +16,6 @@ public class ItemMixin {
 
     @Inject(method = "onCraft", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void onCraft(ItemStack stack, World world, PlayerEntity player, CallbackInfo ci) {
-        if (!world.isClient()) CraftEvent.CRAFT.invoker().playerCraft(player, stack);
+        CraftEvent.CRAFT.invoker().playerCraft(player, stack);
     }
 }
