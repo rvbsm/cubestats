@@ -4,20 +4,21 @@
   "version": "${version}",
 
   "name": "CubeStats",
-  "description": "Player Statistic Mod",
+  "description": "A server-side player statistic mod",
   "authors": [
     "rvbsm"
   ],
   "contact": {
-    "sources": "https://github.com/rvbsm/cubestats"
+    "sources": "https://github.com/rvbsm/cubestats",
+    "issues": "https://github.com/rvbsm/cubestats/issues"
   },
 
   "license": "MIT",
 
   "environment": "server",
   "entrypoints": {
-    "server": [
-      "dev.rvbsm.blockstats.BlockStatsMod"
+    "main": [
+      "dev.rvbsm.cubestats.CubeStatsMod"
     ]
   },
   "mixins": [
