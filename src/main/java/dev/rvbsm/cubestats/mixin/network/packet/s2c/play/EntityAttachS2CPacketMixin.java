@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(EntityAttachS2CPacket.class)
 public class EntityAttachS2CPacketMixin {
 
-    @Inject(method = "<init>(Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/Entity;)V", at = @At("HEAD"))
-    private static void init(Entity entity, Entity player, CallbackInfo ci) {
+    @Inject(method = "<init>(Lnet/minecraft/entity/Entity;Lnet/minecraft/entity/Entity;)V", at = @At("TAIL"))
+    private void init(Entity entity, Entity player, CallbackInfo ci) {
         if (player != null) {
             final World world = player.getWorld();
 
