@@ -10,6 +10,7 @@ public class BlockPlaceEvent {
         for (Place event : listeners)
             event.blockPlace(player, stack);
     });
+
     @FunctionalInterface
     public interface Place {
         void blockPlace(PlayerEntity player, Block block);

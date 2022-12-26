@@ -10,6 +10,7 @@ public class BlockBreakEvent {
         for (Break event : listeners)
             event.blockBreak(player, stack);
     });
+
     @FunctionalInterface
     public interface Break {
         void blockBreak(PlayerEntity player, Block block);
