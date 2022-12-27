@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.projectile;
 
-import dev.rvbsm.cubestats.event.player.FishEvent;
+import dev.rvbsm.cubestats.api.player.PlayerFishCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,7 +26,7 @@ public abstract class FishingBobberEntityMixin {
 
 
         if (player != null && entity instanceof final ItemEntity itemEntity)
-            FishEvent.FISH.invoker().catchItem(player, itemEntity.getStack());
+            PlayerFishCallback.EVENT.invoker().playerFish(player, itemEntity.getStack());
 
         return world.spawnEntity(entity);
     }

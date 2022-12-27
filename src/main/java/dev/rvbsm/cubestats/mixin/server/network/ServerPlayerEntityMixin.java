@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.server.network;
 
-import dev.rvbsm.cubestats.event.player.ConnectionEvent;
+import dev.rvbsm.cubestats.api.player.PlayerLoadEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,6 +12,6 @@ public class ServerPlayerEntityMixin {
 
     @Inject(at = @At(value = "TAIL"), method = "onDisconnect")
     private void onDisconnect(CallbackInfo ci) {
-        ConnectionEvent.DISCONNECT.invoker().playerDisconnect((ServerPlayerEntity) (Object) this);
+        PlayerLoadEvents.DISCONNECT.invoker().playerDisconnect((ServerPlayerEntity) (Object) this);
     }
 }

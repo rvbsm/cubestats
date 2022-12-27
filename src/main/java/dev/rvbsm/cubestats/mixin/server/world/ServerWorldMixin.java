@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.server.world;
 
-import dev.rvbsm.cubestats.event.player.DimensionEvent;
+import dev.rvbsm.cubestats.api.player.PlayerWorldChangeCallback;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,6 +13,6 @@ public class ServerWorldMixin {
 
     @Inject(at = @At(value = "TAIL"), method = "onPlayerChangeDimension")
     private void onDimensionChanged(ServerPlayerEntity player, CallbackInfo ci) {
-        DimensionEvent.DIMENSION.invoker().playerTeleport(player, player.getWorld().getDimension());
+        PlayerWorldChangeCallback.EVENT.invoker().playerWorldChange(player, player.getWorld().getDimension());
     }
 }

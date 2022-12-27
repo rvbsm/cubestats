@@ -1,12 +1,12 @@
-package dev.rvbsm.cubestats.event.player;
+package dev.rvbsm.cubestats.api.player;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class DeathEvent {
-    public static Event<Death> DEATH = EventFactory.createArrayBacked(Death.class, (listeners) -> (player, source) -> {
+public class PlayerDeathCallback {
+    public static final Event<Death> EVENT = EventFactory.createArrayBacked(Death.class, (listeners) -> (player, source) -> {
         for (Death event : listeners)
             event.playerDeath(player, source);
     });

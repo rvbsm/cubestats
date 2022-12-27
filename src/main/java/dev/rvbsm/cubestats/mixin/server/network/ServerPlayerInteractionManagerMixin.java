@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.server.network;
 
-import dev.rvbsm.cubestats.event.player.block.BlockBreakEvent;
+import dev.rvbsm.cubestats.api.block.BlockBreakCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -24,6 +24,6 @@ public class ServerPlayerInteractionManagerMixin {
 
     @Inject(method = "tryBreakBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;onBreak(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;Lnet/minecraft/entity/player/PlayerEntity;)V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void breakBlock(BlockPos pos, CallbackInfoReturnable<Boolean> cir, BlockState state, BlockEntity entity, Block block) {
-        BlockBreakEvent.BREAK.invoker().blockBreak(this.player, block);
+        BlockBreakCallback.EVENT.invoker().blockBreak(this.player, block);
     }
 }

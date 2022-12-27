@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.item;
 
-import dev.rvbsm.cubestats.event.player.entity.sheep.DyeEvent;
+import dev.rvbsm.cubestats.api.entity.SheepDyeCallback;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
@@ -25,6 +25,6 @@ public class DyeItemMixin {
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/SheepEntity;setColor(Lnet/minecraft/util/DyeColor;)V"),
             method = "useOnEntity")
     void useOnEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
-        DyeEvent.DYE.invoker().sheepDye(player, this.color);
+        SheepDyeCallback.EVENT.invoker().sheepDye(player, this.color);
     }
 }

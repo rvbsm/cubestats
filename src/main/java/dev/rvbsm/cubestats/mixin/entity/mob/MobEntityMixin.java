@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.mob;
 
-import dev.rvbsm.cubestats.event.player.entity.LeashEvent;
+import dev.rvbsm.cubestats.api.entity.EntityLeashCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,6 +16,6 @@ public class MobEntityMixin {
     @Inject(at = @At(value = "TAIL"), method = "attachLeash", locals = LocalCapture.CAPTURE_FAILHARD)
     private void attachLeash(Entity entity, boolean sendPacket, CallbackInfo ci) {
         if (entity instanceof final PlayerEntity player)
-            LeashEvent.LEASH.invoker().animalLeash(player, (MobEntity) (Object) this);
+            EntityLeashCallback.EVENT.invoker().entityLeash(player, (MobEntity) (Object) this);
     }
 }

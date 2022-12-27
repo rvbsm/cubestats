@@ -1,7 +1,7 @@
 package dev.rvbsm.cubestats.mixin.entity;
 
-import dev.rvbsm.cubestats.event.player.DeathEvent;
-import dev.rvbsm.cubestats.event.player.entity.KillEvent;
+import dev.rvbsm.cubestats.api.player.PlayerDeathCallback;
+import dev.rvbsm.cubestats.api.entity.EntityKillCallback;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,11 +18,11 @@ public abstract class LivingEntityMixin {
             method = "onDeath")
     private void onDeath(DamageSource source, CallbackInfo ci) {
         if (source.getSource() instanceof final PlayerEntity player) {
-            KillEvent.KILL.invoker().mobKill(player, (LivingEntity) (Object) this);
+            EntityKillCallback.EVENT.invoker().entityKill(player, (LivingEntity) (Object) this);
         }
 
         if ((LivingEntity) (Object) this instanceof final PlayerEntity player) {
-            DeathEvent.DEATH.invoker().playerDeath(player, source);
+            PlayerDeathCallback.EVENT.invoker().playerDeath(player, source);
         }
     }
 }

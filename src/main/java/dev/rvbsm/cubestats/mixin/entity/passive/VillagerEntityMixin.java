@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.cubestats.event.player.TradeEvent;
+import dev.rvbsm.cubestats.api.player.VillagerTradeCallback;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.village.TradeOffer;
@@ -19,6 +19,6 @@ public abstract class VillagerEntityMixin {
 
     @Inject(at = @At(value = "TAIL"), method = "afterUsing", locals = LocalCapture.CAPTURE_FAILHARD)
     private void afterUsing(TradeOffer offer, CallbackInfo ci) {
-        TradeEvent.TRADE.invoker().playerTrade(this.lastCustomer, (VillagerEntity) (Object) this);
+        VillagerTradeCallback.EVENT.invoker().villagerTrade(this.lastCustomer, (VillagerEntity) (Object) this);
     }
 }

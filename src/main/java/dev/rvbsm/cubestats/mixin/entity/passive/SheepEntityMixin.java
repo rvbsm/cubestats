@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.cubestats.event.player.entity.sheep.ShearEvent;
+import dev.rvbsm.cubestats.api.entity.SheepShearCallback;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
@@ -21,6 +21,6 @@ public abstract class SheepEntityMixin {
 
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/SheepEntity;sheared(Lnet/minecraft/sound/SoundCategory;)V"), method = "interactMob", locals = LocalCapture.CAPTURE_FAILHARD)
     private void interactMob(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
-        ShearEvent.SHEAR.invoker().sheepShear(player, this.getColor());
+        SheepShearCallback.EVENT.invoker().sheepShear(player, this.getColor());
     }
 }

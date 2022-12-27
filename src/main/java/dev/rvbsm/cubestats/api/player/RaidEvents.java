@@ -1,15 +1,15 @@
-package dev.rvbsm.cubestats.event.player;
+package dev.rvbsm.cubestats.api.player;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class RaidEvent {
-    public static Event<Victory> VICTORY = EventFactory.createArrayBacked(Victory.class, (listeners) -> (player) -> {
+public class RaidEvents {
+    public static final Event<Victory> VICTORY = EventFactory.createArrayBacked(Victory.class, (listeners) -> (player) -> {
         for (Victory event : listeners)
             event.raidVictory(player);
     });
-    public static Event<Defeat> DEFEAT = EventFactory.createArrayBacked(Defeat.class, (listeners) -> (player) -> {
+    public static final Event<Defeat> DEFEAT = EventFactory.createArrayBacked(Defeat.class, (listeners) -> (player) -> {
         for (Defeat event : listeners)
             event.raidDefeat(player);
     });

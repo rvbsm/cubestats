@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.village.raid;
 
-import dev.rvbsm.cubestats.event.player.RaidEvent;
+import dev.rvbsm.cubestats.api.player.RaidEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -39,8 +39,8 @@ public abstract class RaidMixin {
         if (this.isFinished() && this.finishCooldown == 20) {
             List<ServerPlayerEntity> list = this.world.getPlayers(this.isInRaidDistance());
             for (PlayerEntity player : list) {
-                if (this.hasWon()) RaidEvent.VICTORY.invoker().raidVictory(player);
-                else RaidEvent.DEFEAT.invoker().raidDefeat(player);
+                if (this.hasWon()) RaidEvents.VICTORY.invoker().raidVictory(player);
+                else RaidEvents.DEFEAT.invoker().raidDefeat(player);
             }
         }
     }

@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.item;
 
-import dev.rvbsm.cubestats.event.player.block.BlockPlaceEvent;
+import dev.rvbsm.cubestats.api.block.BlockPlaceCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +20,6 @@ public class BlockItemMixin {
         final PlayerEntity player = context.getPlayer();
         final Block block = Block.getBlockFromItem(context.getStack().getItem());
 
-        BlockPlaceEvent.PLACE.invoker().blockPlace(player, block);
+        BlockPlaceCallback.EVENT.invoker().blockPlace(player, block);
     }
 }

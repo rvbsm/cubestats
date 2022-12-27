@@ -1,12 +1,12 @@
-package dev.rvbsm.cubestats.event.player;
+package dev.rvbsm.cubestats.api.player;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
-public class CraftEvent {
-    public static Event<Craft> CRAFT = EventFactory.createArrayBacked(Craft.class, (listeners) -> (player, stack) -> {
+public class PlayerCraftCallback {
+    public static final Event<Craft> EVENT = EventFactory.createArrayBacked(Craft.class, (listeners) -> (player, stack) -> {
         for (Craft event : listeners)
             event.playerCraft(player, stack);
     });

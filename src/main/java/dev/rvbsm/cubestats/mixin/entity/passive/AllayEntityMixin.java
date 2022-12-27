@@ -1,6 +1,6 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
-import dev.rvbsm.cubestats.event.player.entity.BreedEvent;
+import dev.rvbsm.cubestats.api.entity.AnimalBreedCallback;
 import net.minecraft.entity.passive.AllayEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -17,6 +17,6 @@ public class AllayEntityMixin {
 
     @Inject(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/AllayEntity;duplicate()V"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void breedAllay(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir, ItemStack itemStack, ItemStack itemStack2) {
-        BreedEvent.BREED.invoker().animalBreed(player, (AllayEntity) (Object) this);
+        AnimalBreedCallback.EVENT.invoker().animalBreed(player, (AllayEntity) (Object) this);
     }
 }
