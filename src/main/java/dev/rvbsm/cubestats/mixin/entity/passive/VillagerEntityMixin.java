@@ -3,23 +3,22 @@ package dev.rvbsm.cubestats.mixin.entity.passive;
 import dev.rvbsm.cubestats.event.player.TradeEvent;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import org.jetbrains.annotations.Nullable;
-import org.objectweb.asm.Opcodes;
+import net.minecraft.village.TradeOffer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(VillagerEntity.class)
-public class VillagerEntityMixin {
+public abstract class VillagerEntityMixin {
 
     @Shadow
-    private @Nullable PlayerEntity lastCustomer;
+    private PlayerEntity lastCustomer;
 
-    @Redirect(at = @At(value = "FIELD", target = "Lnet/minecraft/entity/passive/VillagerEntity;lastCustomer:Lnet/minecraft/entity/player/PlayerEntity;", opcode = Opcodes.PUTFIELD),
-            method = "afterUsing")
-    private void afterUsing(VillagerEntity villager, PlayerEntity player) {
-        TradeEvent.TRADE.invoker().playerTrade(player, villager);
-        this.lastCustomer = player;
+    @Inject(at = @At(value = "TAIL"), method = "afterUsing", locals = LocalCapture.CAPTURE_FAILHARD)
+    private void afterUsing(TradeOffer offer, CallbackInfo ci) {
+        TradeEvent.TRADE.invoker().playerTrade(this.lastCustomer, (VillagerEntity) (Object) this);
     }
 }

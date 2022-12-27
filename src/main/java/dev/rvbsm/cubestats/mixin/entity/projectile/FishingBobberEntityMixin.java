@@ -25,9 +25,8 @@ public abstract class FishingBobberEntityMixin {
         final PlayerEntity player = this.getPlayerOwner();
 
 
-        if (player != null)
-            if (entity instanceof final ItemEntity itemEntity)
-                FishEvent.FISH.invoker().catchItem(player, itemEntity.getStack());
+        if (player != null && entity instanceof final ItemEntity itemEntity)
+            FishEvent.FISH.invoker().catchItem(player, itemEntity.getStack());
 
         return world.spawnEntity(entity);
     }

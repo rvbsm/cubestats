@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ public class AnimalEntityMixin {
     @Shadow
     private UUID lovingPlayer;
 
-    @Inject(method = "breed", at = @At("TAIL"))
+    @Inject(at = @At("TAIL"), method = "breed", locals = LocalCapture.CAPTURE_FAILHARD)
     private void breedEntity(ServerWorld world, AnimalEntity other, CallbackInfo ci) {
         final PlayerEntity player = (PlayerEntity) world.getEntity(this.lovingPlayer);
 

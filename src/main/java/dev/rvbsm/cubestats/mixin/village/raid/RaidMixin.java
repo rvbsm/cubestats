@@ -23,28 +23,24 @@ public abstract class RaidMixin {
     private ServerWorld world;
 
     @Shadow
-    public abstract boolean hasWon();
-
-    @Shadow
-    protected abstract Predicate<ServerPlayerEntity> isInRaidDistance();
+    private int finishCooldown;
 
     @Shadow
     public abstract boolean isFinished();
 
     @Shadow
-    private int finishCooldown;
+    public abstract boolean hasWon();
 
-    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/boss/ServerBossBar;setName(Lnet/minecraft/text/Text;)V"),
-            method = "tick")
+    @Shadow
+    protected abstract Predicate<ServerPlayerEntity> isInRaidDistance();
+
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/boss/ServerBossBar;setName(Lnet/minecraft/text/Text;)V"), method = "tick")
     private void tick(CallbackInfo ci) {
         if (this.isFinished() && this.finishCooldown == 20) {
             List<ServerPlayerEntity> list = this.world.getPlayers(this.isInRaidDistance());
             for (PlayerEntity player : list) {
-                if (this.hasWon())
-                    RaidEvent.VICTORY.invoker().raidVictory(player);
-                else
-                    RaidEvent.DEFEAT.invoker().raidDefeat(player);
-
+                if (this.hasWon()) RaidEvent.VICTORY.invoker().raidVictory(player);
+                else RaidEvent.DEFEAT.invoker().raidDefeat(player);
             }
         }
     }

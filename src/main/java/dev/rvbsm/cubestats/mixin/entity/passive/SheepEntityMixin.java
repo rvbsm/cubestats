@@ -1,23 +1,26 @@
 package dev.rvbsm.cubestats.mixin.entity.passive;
 
 import dev.rvbsm.cubestats.event.player.entity.sheep.ShearEvent;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.util.Hand;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(SheepEntity.class)
-public class SheepEntityMixin {
+public abstract class SheepEntityMixin {
 
-    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/SheepEntity;emitGameEvent(Lnet/minecraft/world/event/GameEvent;Lnet/minecraft/entity/Entity;)V"),
-            method = "interactMob")
-    void interactMob(SheepEntity instance, GameEvent gameEvent, Entity player) {
-        final DyeColor color = instance.getColor();
+    @Shadow
+    public abstract DyeColor getColor();
 
-        ShearEvent.SHEAR.invoker().sheepShear((PlayerEntity) player, color);
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/passive/SheepEntity;sheared(Lnet/minecraft/sound/SoundCategory;)V"), method = "interactMob", locals = LocalCapture.CAPTURE_FAILHARD)
+    private void interactMob(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+        ShearEvent.SHEAR.invoker().sheepShear(player, this.getColor());
     }
 }
