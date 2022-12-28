@@ -38,8 +38,9 @@ public abstract class RaidMixin {
     private void tick(CallbackInfo ci) {
         if (this.isFinished() && this.finishCooldown == 20) {
             List<ServerPlayerEntity> list = this.world.getPlayers(this.isInRaidDistance());
+            final boolean isWon = this.hasWon();
             for (PlayerEntity player : list) {
-                if (this.hasWon()) RaidEvents.VICTORY.invoker().raidVictory(player);
+                if (isWon) RaidEvents.VICTORY.invoker().raidVictory(player);
                 else RaidEvents.DEFEAT.invoker().raidDefeat(player);
             }
         }
